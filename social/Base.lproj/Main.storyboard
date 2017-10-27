@@ -17,28 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bK-jn-gmA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="111"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bK-jn-gmA" customClass="FancyView" customModule="social" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-insta" translatesAutoresizingMaskIntoConstraints="NO" id="pxX-jr-gxZ">
-                                        <rect key="frame" x="149" y="19" width="76" height="72"/>
+                                        <rect key="frame" x="149" y="19" width="76" height="101"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="pxX-jr-gxZ" firstAttribute="leading" secondItem="7bK-jn-gmA" secondAttribute="leading" constant="149" id="7T4-nc-2XF"/>
-                                    <constraint firstAttribute="height" constant="111" id="Bjb-S1-uBq"/>
+                                    <constraint firstAttribute="height" constant="140" id="Bjb-S1-uBq"/>
                                     <constraint firstAttribute="trailing" secondItem="pxX-jr-gxZ" secondAttribute="trailing" constant="150" id="Uhf-kb-lKF"/>
                                     <constraint firstAttribute="bottom" secondItem="pxX-jr-gxZ" secondAttribute="bottom" constant="20" id="afh-qr-Mm3"/>
                                     <constraint firstAttribute="width" constant="375" id="d6j-HV-Nkg"/>
                                     <constraint firstItem="pxX-jr-gxZ" firstAttribute="top" secondItem="7bK-jn-gmA" secondAttribute="top" constant="19" id="iVc-Pc-y5x"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWd-98-lJN">
-                                <rect key="frame" x="0.0" y="513" width="375" height="154"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWd-98-lJN" customClass="FancyView" customModule="social" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="542" width="375" height="125"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have not signed before - new account automatically will be created" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr1-af-Qfy">
-                                        <rect key="frame" x="8" y="4" width="359" height="142"/>
+                                        <rect key="frame" x="8" y="4" width="359" height="113"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -55,29 +55,30 @@
                                     <constraint firstItem="Xr1-af-Qfy" firstAttribute="top" secondItem="iWd-98-lJN" secondAttribute="top" constant="4" id="yCH-oK-OiK"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yB-6l-dkm">
-                                <rect key="frame" x="16" y="119" width="343" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Sign In into your Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yB-6l-dkm">
+                                <rect key="frame" x="16" y="148" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4l-WL-Xce">
-                                <rect key="frame" x="77" y="266" width="220" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4l-WL-Xce" customClass="FancyButton" customModule="social" customModuleProvider="target">
+                                <rect key="frame" x="77" y="295" width="220" height="30"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lQU-mV-l8C"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="e-mail" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2HK-3I-Jfy">
-                                <rect key="frame" x="77" y="190" width="220" height="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="enter your email" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2HK-3I-Jfy" customClass="FancyField" customModule="social" customModuleProvider="target">
+                                <rect key="frame" x="77" y="219" width="220" height="30"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fn0-TA-hOG">
-                                <rect key="frame" x="77" y="228" width="220" height="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="enter your password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fn0-TA-hOG" customClass="FancyField" customModule="social" customModuleProvider="target">
+                                <rect key="frame" x="77" y="257" width="220" height="30"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -110,6 +111,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="2HK-3I-Jfy" id="BPb-b2-rKd"/>
+                        <outlet property="passwordField" destination="Fn0-TA-hOG" id="jRg-2q-KgW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
