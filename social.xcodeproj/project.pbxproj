@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18E90AB21FA340DF00AAECB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18E90AB11FA340DF00AAECB4 /* GoogleService-Info.plist */; };
 		21CFCB051F8A71200032E371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CFCB041F8A71200032E371 /* AppDelegate.swift */; };
 		21CFCB071F8A71200032E371 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CFCB061F8A71200032E371 /* SignInVC.swift */; };
 		21CFCB0A1F8A71200032E371 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21CFCB081F8A71200032E371 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18E90AB11FA340DF00AAECB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		21CFCB011F8A71200032E371 /* social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = social.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CFCB041F8A71200032E371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21CFCB061F8A71200032E371 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -23,7 +25,6 @@
 		21CFCB0B1F8A71200032E371 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21CFCB0E1F8A71200032E371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21CFCB101F8A71200032E371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21EF2B401F8A751800FBF243 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A828A4711767811107FE239 /* Pods_social.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_social.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4D9D898A7C2A52E578227F /* Pods-social.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-social.debug.xcconfig"; path = "Pods/Target Support Files/Pods-social/Pods-social.debug.xcconfig"; sourceTree = "<group>"; };
 		AEAA33B15BC56B44DDFBB6A7 /* Pods-social.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-social.release.xcconfig"; path = "Pods/Target Support Files/Pods-social/Pods-social.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,8 +91,8 @@
 				21CFCB041F8A71200032E371 /* AppDelegate.swift */,
 				21CFCB081F8A71200032E371 /* Main.storyboard */,
 				21CFCB0B1F8A71200032E371 /* Assets.xcassets */,
-				21EF2B401F8A751800FBF243 /* GoogleService-Info.plist */,
 				21CFCB0D1F8A71200032E371 /* LaunchScreen.storyboard */,
+				18E90AB11FA340DF00AAECB4 /* GoogleService-Info.plist */,
 				21CFCB101F8A71200032E371 /* Info.plist */,
 			);
 			path = social;
@@ -179,6 +180,7 @@
 				21CFCB0F1F8A71200032E371 /* LaunchScreen.storyboard in Resources */,
 				21CFCB0C1F8A71200032E371 /* Assets.xcassets in Resources */,
 				21CFCB0A1F8A71200032E371 /* Main.storyboard in Resources */,
+				18E90AB21FA340DF00AAECB4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
