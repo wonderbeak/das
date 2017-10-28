@@ -10,5 +10,6 @@ target 'social' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
-  
+  pod 'SwiftKeychainWrapper', :git => 'https://github.com/jrendel/SwiftKeychainWrapper.git', :branch => 'master'
+
 end
