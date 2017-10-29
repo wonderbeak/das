@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
@@ -15,6 +16,7 @@ class SignInVC: UIViewController {
     @IBOutlet weak var emailField: FancyField!
     @IBOutlet weak var passwordField: FancyField!
     @IBOutlet weak var errorField: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +33,18 @@ class SignInVC: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func firebaseAuth(_ credential: FIRAuthCredential) {
-        FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
+    func firebaseAuth(_ credential: AuthCredential) {
+        Auth.auth().signIn(with: credential, completion: {(user, error) in
             if error != nil {
                 self.alert(text: "Unable to authenticate with Firebase.", flag: false)
             } else {
                 self.alert(text: "Successfully authenticated with Firebase.", flag: true)
                 if let user = user {
-                    self.completeSignIn(id: user.uid)
+                    let userData = ["avatar": "kkk",
+                                    "name": "Jaroslavs",
+                                    "birth": "14.07.1989",
+                                    "uid": user.uid]
+                    self.completeSignIn(id: user.uid, userData: userData)
                 }
             }
         })
@@ -46,21 +52,29 @@ class SignInVC: UIViewController {
     
     @IBAction func signInTapped(_ sender: Any) {
         if let email = emailField.text, let password = passwordField.text {
-            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: {(user, error) in
+            Auth.auth().signIn(withEmail: email, password: password, completion: {(user, error) in
                 if error == nil {
                     self.alert(text: "Email user authenticated with Firebase.", flag: true)
                     if let user = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData = ["avatar": "kkk",
+                                        "name": "Jaroslavs",
+                                        "birth": "14.07.1989",
+                                        "uid": user.uid]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
                     if isValidEmail(testStr: email) {
-                        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: {(user, error) in
+                        Auth.auth().createUser(withEmail: email, password: password, completion: {(user, error) in
                             if error != nil {
                                 self.alert(text: "Unable to authenticate with Firebase", flag: false)
                                 } else {
                                 self.alert(text: "Successfully created new user in Firebase.", flag: true)
                                 if let user = user {
-                                    self.completeSignIn(id: user.uid)
+                                    let userData = ["avatar": "kkk",
+                                                    "name": "Jaroslavs",
+                                                    "birth": "14.07.1989",
+                                                    "uid": user.uid]
+                                    self.completeSignIn(id: user.uid, userData: userData)
                                 }
                             }
                         })
@@ -84,7 +98,8 @@ class SignInVC: UIViewController {
         self.errorField.isHidden = false
     }
     
-    func completeSignIn(id: String) {
+    func completeSignIn(id: String, userData: Dictionary<String, Any>) {
+        DataService.init().createUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID) // problemo here
         print("Data successfully saved to keychain: \(keychainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
