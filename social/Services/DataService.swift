@@ -9,13 +9,15 @@
 import Foundation
 import Firebase
 
+let STORAGE_BASE = Storage.storage().reference()
+
 class DataService {
     
     public var REF_USERS = Firestore.firestore().collection("users")
     public var REF_POSTS = Firestore.firestore().collection("posts")
     public var REF_COMMENTS = Firestore.firestore().collection("comments")
     public var REF_IMAGES = Firestore.firestore().collection("images")
-    //FirebaseApp.configure()
+    public var STORAGE = STORAGE_BASE.child("post-pics")
     
     // USERS
     // create
@@ -33,23 +35,23 @@ class DataService {
         return REF_POSTS.document(uid)
     }
     
-    var posts = [Post]()
-    
-    func fetchPosts() -> [Post] {
-        REF_POSTS.getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let key = document.documentID
-                    let post = Post.init(postKey: key, postData: document.data())
-                    self.posts.append(post)
-                    print("\(document.documentID) => \(document.data())")
-                }
-            }
-        }
-        return posts
-    }
+//    var posts = [Post]()
+//
+//    func fetchPosts() -> [Post] {
+//        REF_POSTS.getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    let key = document.documentID
+//                    let post = Post.init(postKey: key, postData: document.data())
+//                    self.posts.append(post)
+//                    print("\(document.documentID) => \(document.data())")
+//                }
+//            }
+//        }
+//        return posts
+//    }
 //
 //    .getDocument{ (document, error) in
 //    if let document = document {

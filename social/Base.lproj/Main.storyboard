@@ -289,7 +289,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GHB-N8-NMi">
                                                             <rect key="frame" x="8" y="96" width="343" height="736.5"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-image" translatesAutoresizingMaskIntoConstraints="NO" id="Qe5-Jz-iTt">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-image" translatesAutoresizingMaskIntoConstraints="NO" id="Qe5-Jz-iTt">
                                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="736.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="232" id="0eO-oM-rBX"/>

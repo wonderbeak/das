@@ -16,6 +16,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var addImage: UIImageView!
     
     var imagePicker: UIImagePickerController!
+    static var imageCache:  NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
     
     override func viewDidLoad() {
@@ -35,7 +36,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     let key = document.documentID
                     let post = Post.init(postKey: key, postData: document.data())
                     self.posts.append(post)
-                    //print("\(document.documentID) => \(document.data())")
                 }
             }
             self.tableView.reloadData()
@@ -53,8 +53,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
-            cell.configureCell(post: post)
-            return cell
+            
+            //var image: UIImage!
+            if let img = FeedVC.imageCache.object(forKey: post.image as NSString) {
+                cell.configureCell(post: post, image: img)
+                return cell
+            } else {
+                cell.configureCell(post: post)
+                return cell
+            }
         } else {
             return PostCell()
         }
