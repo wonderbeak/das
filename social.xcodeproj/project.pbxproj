@@ -11,7 +11,10 @@
 		183CCD781FA55A9900FD256F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CCD771FA55A9900FD256F /* Post.swift */; };
 		183DCEF11FA4DDBF00402CBA /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183DCEF01FA4DDBF00402CBA /* FeedVC.swift */; };
 		183DCEF51FA4F35000402CBA /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183DCEF41FA4F35000402CBA /* CircleView.swift */; };
+		183E50831FA668F0000C95D7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E50821FA668F0000C95D7 /* User.swift */; };
+		183E50851FA66F47000C95D7 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E50841FA66F47000C95D7 /* CommentVC.swift */; };
 		189681131FA629BD005801C4 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189681121FA629BD005801C4 /* Image.swift */; };
+		189681151FA64D0A005801C4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189681141FA64D0A005801C4 /* ProfileVC.swift */; };
 		18C593FC1FA349F80036093C /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C593FB1FA349F80036093C /* FancyView.swift */; };
 		18C593FF1FA34AB80036093C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C593FE1FA34AB80036093C /* Constants.swift */; };
 		18C594011FA34D4D0036093C /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C594001FA34D4D0036093C /* RoundBtn.swift */; };
@@ -33,7 +36,10 @@
 		183CCD771FA55A9900FD256F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		183DCEF01FA4DDBF00402CBA /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		183DCEF41FA4F35000402CBA /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		183E50821FA668F0000C95D7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		183E50841FA66F47000C95D7 /* CommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
 		189681121FA629BD005801C4 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		189681141FA64D0A005801C4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		18C593FB1FA349F80036093C /* FancyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		18C593FE1FA34AB80036093C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18C594001FA34D4D0036093C /* RoundBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 			children = (
 				183CCD771FA55A9900FD256F /* Post.swift */,
 				189681121FA629BD005801C4 /* Image.swift */,
+				183E50821FA668F0000C95D7 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -98,6 +105,8 @@
 			children = (
 				21CFCB061F8A71200032E371 /* SignInVC.swift */,
 				183DCEF01FA4DDBF00402CBA /* FeedVC.swift */,
+				189681141FA64D0A005801C4 /* ProfileVC.swift */,
+				183E50841FA66F47000C95D7 /* CommentVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -325,12 +334,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				18ED2CD91FA50A6A00FC6630 /* PostCell.swift in Sources */,
+				189681151FA64D0A005801C4 /* ProfileVC.swift in Sources */,
 				18C594031FA34ECC0036093C /* FancyField.swift in Sources */,
 				183DCEF11FA4DDBF00402CBA /* FeedVC.swift in Sources */,
+				183E50831FA668F0000C95D7 /* User.swift in Sources */,
 				181BF6B41FA5414E001673DE /* DataService.swift in Sources */,
 				183CCD781FA55A9900FD256F /* Post.swift in Sources */,
 				21CFCB071F8A71200032E371 /* SignInVC.swift in Sources */,
 				18C594011FA34D4D0036093C /* RoundBtn.swift in Sources */,
+				183E50851FA66F47000C95D7 /* CommentVC.swift in Sources */,
 				189681131FA629BD005801C4 /* Image.swift in Sources */,
 				18C594081FA35B730036093C /* Functions.swift in Sources */,
 				18C594051FA350130036093C /* FancyButton.swift in Sources */,

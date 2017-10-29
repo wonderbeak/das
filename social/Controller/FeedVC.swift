@@ -15,6 +15,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addImage: UIImageView!
     @IBOutlet weak var captionField: UITextField!
+    @IBOutlet weak var contentField: UITextField!
     
     var imagePicker: UIImagePickerController!
     static var imageCache:  NSCache<NSString, UIImage> = NSCache()
@@ -112,9 +113,37 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                 } else {
                     print("FEEDVC: Successfully uploaded to Firebase storage.")
                     let downloadURL = metadata?.downloadURL()?.absoluteString
+                    if let url = downloadURL {
+                        self.postToFirebase(imgUrl: downloadURL!)
+                    }
                 }
             }
         }
+    }
+    
+    func postToFirebase(imgUrl: String) {
+        let image: Dictionary<String, Any> = [
+            "name": NSUUID().uuidString,
+            "url": imgUrl,
+            "date": Date()
+        ]
+        let firebaseImage = ds.REF_IMAGES.addDocument(data: image)
+        
+        let post: Dictionary<String, Any> = [
+            "caption": captionField.text as Any,
+            "image": firebaseImage.documentID,
+            "content": contentField.text as Any,
+            "date": Date(),
+            "likes": 0
+        ]
+        let firebasePost = ds.REF_POSTS.addDocument(data: post)
+        let user = ds.REF_USER_CURRENT
+        user.collection("posts").addDocument(data: ["postId": firebasePost.documentID])
+        
+        captionField.text = ""
+        contentField.text = ""
+        imageSelected = false
+        addImage.image = UIImage(named: "icon-add-image")
     }
     
     @IBAction func signOutButton(_ sender: Any) {
@@ -122,6 +151,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         //print(DataService.init().fetchPost(uid: "46daiPsVmhArL0nx1JEf"))
         KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         performSegue(withIdentifier: "goToSignIn", sender: nil)
+    }
+    
+    @IBAction func profileButton(_ sender: Any) {
+        performSegue(withIdentifier: "goToProfile", sender: nil)
     }
     
 }

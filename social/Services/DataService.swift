@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import SwiftKeychainWrapper
 
 let STORAGE_BASE = Storage.storage().reference()
 
@@ -17,12 +18,20 @@ class DataService {
     public var REF_POSTS = Firestore.firestore().collection("posts")
     public var REF_COMMENTS = Firestore.firestore().collection("comments")
     public var REF_IMAGES = Firestore.firestore().collection("images")
+    
     public var STORAGE = STORAGE_BASE.child("post-pics")
     
     // USERS
     // create
     func createUser(uid: String, userData: Dictionary<String, Any>){
         REF_USERS.document(uid).setData(userData)
+    }
+    
+    // select
+    var REF_USER_CURRENT: DocumentReference {
+        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
+        let user = REF_USERS.document(uid!)
+        return user
     }
     
     // POSTS
@@ -35,6 +44,7 @@ class DataService {
         return REF_POSTS.document(uid)
     }
     
+    // bug!!!
     var imageUrl: String = "gs://utgard-a8029.appspot.com/post-pics/usa.jpg"
     
     func getImage(uid: String) -> String {
@@ -50,32 +60,6 @@ class DataService {
         }
         return imageUrl
     }
-    
-//    var posts = [Post]()
-//
-//    func fetchPosts() -> [Post] {
-//        REF_POSTS.getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    let key = document.documentID
-//                    let post = Post.init(postKey: key, postData: document.data())
-//                    self.posts.append(post)
-//                    print("\(document.documentID) => \(document.data())")
-//                }
-//            }
-//        }
-//        return posts
-//    }
-//
-//    .getDocument{ (document, error) in
-//    if let document = document {
-//    print(document.data())
-//    } else {
-//    print("Document does not exist")
-//    }
-//    }
     
     // COMMENTS
     // create
