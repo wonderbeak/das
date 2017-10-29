@@ -59,7 +59,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
 
     
     @IBAction func backButton(_ sender: Any) {
-        performSegue(withIdentifier: "backToFeed", sender: nil)
+        //performSegue(withIdentifier: "backToFeed", sender: nil)
     }
     @IBAction func saveButton(_ sender: Any) {
         guard let name = nameField.text else {
@@ -88,7 +88,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             }
         }
         
-        performSegue(withIdentifier: "backToFeed", sender: nil)
+        //performSegue(withIdentifier: "backToFeed", sender: nil)
     }
     
     func postToFirebase(imgUrl: String) {

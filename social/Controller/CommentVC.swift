@@ -13,7 +13,14 @@ import SwiftKeychainWrapper
 
 class CommentVC: UIViewController {
 
+    var post: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(post)
+    }
+    
+    @IBAction func backBut(_ sender: Any) {
+        performSegue(withIdentifier: "backToFeed", sender: nil)
     }
 }

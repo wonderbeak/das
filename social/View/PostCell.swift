@@ -16,15 +16,17 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var likesImage: UIImageView!
+    @IBOutlet weak var postId: UILabel!
     var post: Post!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     
     func configureCell(post: Post, image: UIImage? = nil) {
         self.post = post
+        self.postId.text = post.postKey
         self.content.text = post.content
         //self.postImage = post.image
         self.usernameLabel.text = post.caption
@@ -51,5 +53,13 @@ class PostCell: UITableViewCell {
                 }
             }
         }
+    }
+    
+    func getPostId() -> String? {
+        return postId.text
+    }
+    
+    @IBAction func commentsButton(_ sender: Any) {
+        print("HERE BUTTON PRESSED")
     }
 }

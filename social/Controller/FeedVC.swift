@@ -17,6 +17,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var captionField: UITextField!
     @IBOutlet weak var contentField: UITextField!
     
+    var postId: String?
+    
     var imagePicker: UIImagePickerController!
     static var imageCache:  NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
@@ -66,9 +68,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             //var image: UIImage!
             if let img = FeedVC.imageCache.object(forKey: url as NSString) {
                 cell.configureCell(post: post, image: img)
+                postId = post.postKey
                 return cell
             } else {
                 cell.configureCell(post: post)
+                postId = post.postKey
                 return cell
             }
         } else {
@@ -154,7 +158,19 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     @IBAction func profileButton(_ sender: Any) {
-        performSegue(withIdentifier: "goToProfile", sender: nil)
+        //performSegue(withIdentifier: "goToProfile", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToComments" {
+            if let destinationViewController = segue.destination as? CommentVC {
+                destinationViewController.post = postId
+            }
+        }
+    }
+    
+    @IBAction func commentsButton(_ sender: Any) {
+        //performSegue(withIdentifier: "goToComments", sender: nil)
     }
     
 }
