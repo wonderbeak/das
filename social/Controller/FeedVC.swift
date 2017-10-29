@@ -18,6 +18,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        DataService.init().fetchPosts()
+        
+        //print(DataService.init().fetchPosts(uid: "46daiPsVmhArL0nx1JEf"))
         // Do any additional setup after loading the view.
     }
     
@@ -39,6 +42,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func signOutButton(_ sender: Any) {
         print("Sign out performed")
+        print(DataService.init().fetchPost(uid: "46daiPsVmhArL0nx1JEf"))
         KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		181BF6B41FA5414E001673DE /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BF6B31FA5414E001673DE /* DataService.swift */; };
+		183CCD781FA55A9900FD256F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CCD771FA55A9900FD256F /* Post.swift */; };
 		183DCEF11FA4DDBF00402CBA /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183DCEF01FA4DDBF00402CBA /* FeedVC.swift */; };
 		183DCEF51FA4F35000402CBA /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183DCEF41FA4F35000402CBA /* CircleView.swift */; };
 		18C593FC1FA349F80036093C /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C593FB1FA349F80036093C /* FancyView.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		181BF6B31FA5414E001673DE /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		183CCD771FA55A9900FD256F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		183DCEF01FA4DDBF00402CBA /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		183DCEF41FA4F35000402CBA /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		18C593FB1FA349F80036093C /* FancyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		21921B8E1F8A773C002E4793 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				183CCD771FA55A9900FD256F /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				18C594031FA34ECC0036093C /* FancyField.swift in Sources */,
 				183DCEF11FA4DDBF00402CBA /* FeedVC.swift in Sources */,
 				181BF6B41FA5414E001673DE /* DataService.swift in Sources */,
+				183CCD781FA55A9900FD256F /* Post.swift in Sources */,
 				21CFCB071F8A71200032E371 /* SignInVC.swift in Sources */,
 				18C594011FA34D4D0036093C /* RoundBtn.swift in Sources */,
 				18C594081FA35B730036093C /* Functions.swift in Sources */,
