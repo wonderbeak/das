@@ -194,18 +194,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikS-eb-fos" customClass="FancyView" customModule="social" customModuleProvider="target">
                                 <rect key="frame" x="8" y="83" width="359" height="75"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="al4-7p-qXR">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="al4-7p-qXR">
                                         <rect key="frame" x="8" y="-4.5" width="343" height="84"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-add-image" translatesAutoresizingMaskIntoConstraints="NO" id="RFy-Dx-gAZ">
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-add-image" translatesAutoresizingMaskIntoConstraints="NO" id="RFy-Dx-gAZ" customClass="CircleView" customModule="social" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="14.5" width="55" height="55"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="55" id="Eso-Tj-hwy"/>
                                                     <constraint firstAttribute="height" constant="55" id="mix-Nd-gIs"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="ICA-n8-hOb" appends="YES" id="GZG-U2-Ltf"/>
+                                                </connections>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a caption" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-5L-paK">
-                                                <rect key="frame" x="55" y="14.5" width="233" height="55"/>
+                                                <rect key="frame" x="65" y="14.5" width="213" height="55"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="E8C-Iy-aRr"/>
                                                 </constraints>
@@ -360,6 +364,13 @@
                                                 <constraint firstAttribute="bottom" secondItem="fI4-so-yb0" secondAttribute="bottom" constant="8" id="szz-fx-8bE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="content" destination="2gz-qW-wPK" id="01p-3g-6sU"/>
+                                            <outlet property="likesImage" destination="dzN-GS-2QC" id="xRG-lC-l12"/>
+                                            <outlet property="postImage" destination="Qe5-Jz-iTt" id="E32-af-cK0"/>
+                                            <outlet property="profileImage" destination="CmQ-sG-pEp" id="ZKX-Pn-XJP"/>
+                                            <outlet property="usernameLabel" destination="MgK-ni-lEf" id="3uY-gI-PBK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -380,11 +391,17 @@
                         <viewLayoutGuide key="safeArea" id="Jco-9W-70y"/>
                     </view>
                     <connections>
+                        <outlet property="addImage" destination="RFy-Dx-gAZ" id="txj-a2-XWG"/>
                         <outlet property="tableView" destination="e8F-mb-IOp" id="RID-Oz-FRI"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="hNK-sP-IjB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBx-sT-igw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ICA-n8-hOb">
+                    <connections>
+                        <action selector="addImageButton:" destination="XT6-xf-M6u" id="112-4a-H4b"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="912.79999999999995" y="106.59670164917542"/>
         </scene>

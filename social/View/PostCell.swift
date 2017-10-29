@@ -9,15 +9,23 @@
 import UIKit
 
 class PostCell: UITableViewCell {
-
+    
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var content: UITextView!
+    @IBOutlet weak var likesImage: UIImageView!
+    var post: Post!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var postImage: UIImageView!
-    @IBOutlet weak var caption: UITextView!
-    @IBOutlet weak var likesImage: UIImageView!
+    func configureCell(post: Post) {
+        self.post = post
+        self.content.text = post.content
+        //self.postImage = post.image
+        self.usernameLabel.text = post.caption
+    }
 }
