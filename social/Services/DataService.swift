@@ -35,6 +35,22 @@ class DataService {
         return REF_POSTS.document(uid)
     }
     
+    var imageUrl: String = "gs://utgard-a8029.appspot.com/post-pics/usa.jpg"
+    
+    func getImage(uid: String) -> String {
+        print("LALALALALALA \(uid)")
+        REF_IMAGES.document(uid).getDocument { (document, error) in
+            if let document = document {
+                let key = document.documentID
+                let image = Image.init(imageKey: key, postData: document.data())
+                self.imageUrl = image.url
+            } else {
+                print("JAR: Image does not exist")
+            }
+        }
+        return imageUrl
+    }
+    
 //    var posts = [Post]()
 //
 //    func fetchPosts() -> [Post] {

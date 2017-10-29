@@ -224,6 +224,9 @@
                                                     <constraint firstAttribute="height" constant="55" id="NVI-Su-3hz"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-add"/>
+                                                <connections>
+                                                    <action selector="postButton:" destination="XT6-xf-M6u" eventType="touchUpInside" id="rPr-ki-eZd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -392,6 +395,7 @@
                     </view>
                     <connections>
                         <outlet property="addImage" destination="RFy-Dx-gAZ" id="txj-a2-XWG"/>
+                        <outlet property="captionField" destination="JdH-5L-paK" id="3vj-sI-CPQ"/>
                         <outlet property="tableView" destination="e8F-mb-IOp" id="RID-Oz-FRI"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="hNK-sP-IjB"/>
                     </connections>
