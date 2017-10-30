@@ -45,10 +45,13 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     self.posts.append(post)
                 }
             }
-            self.tableView.reloadData()
+            self.viewDidAppear(true)
+            //self.tableView.reloadData()
         }
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
     
     // TABLE VIEW
@@ -60,13 +63,24 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         return posts.count
     }
     
+    var imageUrl = "gs://utgard-a8029.appspot.com/post-pics/brasil.jpg"
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
-            let url = ds.getImage(uid: post.image)
+            let image = ds.getImage(uid: post.image)
             //print(url)
             //var image: UIImage!
-            if let img = FeedVC.imageCache.object(forKey: url as NSString) {
+            image.getDocument { (document, error) in
+                    if let document = document {
+                        let key = document.documentID
+                        let image = Image.init(imageKey: key, postData: document.data())
+                        self.imageUrl = image.url
+                    } else {
+                        print("JAR: Image does not exist")
+                    }
+            }
+            if let img = FeedVC.imageCache.object(forKey: imageUrl as NSString) {
                 cell.configureCell(post: post, image: img)
                 //postId = post
                 return cell
@@ -83,7 +97,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.row]
         postId = post
-        print(postId?.postKey)
     }
     
     // IMAGE PICKER
@@ -138,28 +151,45 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             "date": Date()
         ]
         let firebaseImage = ds.REF_IMAGES.addDocument(data: image)
-        
         let post: Dictionary<String, Any> = [
+            "authorId": KeychainWrapper.standard.string(forKey: KEY_UID),
             "caption": captionField.text as Any,
             "image": firebaseImage.documentID,
             "content": contentField.text as Any,
             "date": Date(),
+            "comments": [String](),
             "likes": 0
         ]
         let firebasePost = ds.REF_POSTS.addDocument(data: post)
-        let user = ds.REF_USER_CURRENT
-        user.collection("posts").addDocument(data: ["postId": firebasePost.documentID])
+        
+        ds.REF_USER_CURRENT.getDocument { (document, error) in
+            if let document = document {
+                print("FEEDVC: image is here")
+                let key = document.documentID
+                let user = User.init(userKey: key, userData: document.data())
+                var array = user.posts
+                array.append(firebasePost.documentID)
+                let userData: Dictionary<String, Any> = [
+                    "posts": array
+                ]
+                print(userData)
+                self.ds.REF_USER_CURRENT.updateData(userData)
+            } else {
+                print("FEEDVC: Error occured during user fetching!")
+            }
+        }
         
         captionField.text = ""
         contentField.text = ""
         imageSelected = false
         addImage.image = UIImage(named: "icon-add-image")
+        viewDidAppear(true)
     }
     
     @IBAction func signOutButton(_ sender: Any) {
         print("FEEDVC: Sign out performed")
         //print(DataService.init().fetchPost(uid: "46daiPsVmhArL0nx1JEf"))
-        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+        //KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
     
@@ -175,10 +205,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
     }
     
-  
-    
     @IBAction func commentsButton(_ sender: Any) {
         //performSegue(withIdentifier: "goToComments", sender: nil)
     }
-    
 }

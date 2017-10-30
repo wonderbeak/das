@@ -23,10 +23,9 @@ class SignInVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            print("FOUND!!!")
-            performSegue(withIdentifier: "goToFeed", sender: nil)
-        }
+//        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+//            performSegue(withIdentifier: "goToFeed", sender: nil)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +39,9 @@ class SignInVC: UIViewController {
             } else {
                 self.alert(text: "Successfully authenticated with Firebase.", flag: true)
                 if let user = user {
-                    let userData = ["avatar": "kkk",
-                                    "name": "Jaroslavs",
-                                    "birth": "14.07.1989",
-                                    "uid": user.uid]
-                    self.completeSignIn(id: user.uid, userData: userData)
+                    let userData: Dictionary<String, Any> = ["uid": user.uid,
+                                                             "date": Date()]
+                    self.completeUpdatedSignIn(id: user.uid, userData: userData)
                 }
             }
         })
@@ -56,11 +53,8 @@ class SignInVC: UIViewController {
                 if error == nil {
                     self.alert(text: "Email user authenticated with Firebase.", flag: true)
                     if let user = user {
-                        let userData = ["avatar": "kkk",
-                                        "name": "Jaroslavs",
-                                        "birth": "14.07.1989",
-                                        "uid": user.uid]
-                        self.completeSignIn(id: user.uid, userData: userData)
+                        let userData: Dictionary<String, Any> = ["date": Date()]
+                        self.completeUpdatedSignIn(id: user.uid, userData: userData)
                     }
                 } else {
                     if isValidEmail(testStr: email) {
@@ -70,10 +64,14 @@ class SignInVC: UIViewController {
                                 } else {
                                 self.alert(text: "Successfully created new user in Firebase.", flag: true)
                                 if let user = user {
-                                    let userData = ["avatar": "kkk",
-                                                    "name": "Jaroslavs",
-                                                    "birth": "14.07.1989",
-                                                    "uid": user.uid]
+                                    let userData: Dictionary<String, Any> = ["avatar": "0POW0X248Apdl2dEHwgJ",
+                                                                             "name": "",
+                                                                             "birth": "",
+                                                                             "bio": "",
+                                                                             "uid": user.uid,
+                                                                             "date": Date(),
+                                                                             "posts": [String]()
+                                                                             ]
                                     self.completeSignIn(id: user.uid, userData: userData)
                                 }
                             }
@@ -100,7 +98,14 @@ class SignInVC: UIViewController {
     
     func completeSignIn(id: String, userData: Dictionary<String, Any>) {
         DataService.init().createUser(uid: id, userData: userData)
-        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID) // problemo here
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("Data successfully saved to keychain: \(keychainResult)")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
+    }
+    
+    func completeUpdatedSignIn(id: String, userData: Dictionary<String, Any>) {
+        DataService.init().updateUser(uid: id, userData: userData)
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Data successfully saved to keychain: \(keychainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
     }

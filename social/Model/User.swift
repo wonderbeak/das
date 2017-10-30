@@ -14,6 +14,8 @@ class User {
     private var _birth: String!
     private var _date: Date!
     private var _avatar: String!
+    private var _posts: [String]!
+    
 
     var name: String {
         return _name
@@ -38,13 +40,18 @@ class User {
     var avatar: String {
         return _avatar
     }
+    
+    var posts: [String] {
+        return _posts
+    }
 
-    init(name: String, bio: String, birth: String, date: Date, avatar: String) {
+    init(name: String, bio: String, birth: String, date: Date, avatar: String, posts: [String]) {
         self._name = name
         self._bio = bio
         self._birth = birth
         self._date = date
         self._avatar = avatar
+        self._posts = posts
     }
 
     init(userKey: String, userData: Dictionary<String, Any>) {
@@ -63,6 +70,12 @@ class User {
         }
         if let avatar = userData["avatar"] as! String? {
             self._avatar = avatar
+        }
+        if let posts = userData["posts"] {
+            if posts is [String], posts != nil {
+                self._posts = posts as! [String]
+                print(posts)
+            }
         }
     }
 }

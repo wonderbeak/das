@@ -24,7 +24,7 @@ class DataService {
     // USERS
     // create
     func createUser(uid: String, userData: Dictionary<String, Any>){
-        REF_USERS.document(uid).updateData(userData)
+        REF_USERS.document(uid).setData(userData)
     }
     
     // select
@@ -32,6 +32,11 @@ class DataService {
         let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
         let user = REF_USERS.document(uid!)
         return user
+    }
+    
+    // update
+    func updateUser(uid: String, userData: Dictionary<String, Any>){
+        REF_USERS.document(uid).updateData(userData)
     }
     
     // POSTS
@@ -45,21 +50,9 @@ class DataService {
         return REF_POSTS.document(uid)
     }
     
-    // bug!!!
-    var imageUrl: String = "gs://utgard-a8029.appspot.com/post-pics/usa.jpg"
-    
-    func getImage(uid: String) -> String {
-        print("LALALALALALA \(uid)")
-        REF_IMAGES.document(uid).getDocument { (document, error) in
-            if let document = document {
-                let key = document.documentID
-                let image = Image.init(imageKey: key, postData: document.data())
-                self.imageUrl = image.url
-            } else {
-                print("JAR: Image does not exist")
-            }
-        }
-        return imageUrl
+    func getImage(uid: String) -> DocumentReference {
+        print("DataService: Fetching image: \(uid)")
+        return REF_IMAGES.document(uid)
     }
     
     // COMMENTS

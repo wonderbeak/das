@@ -81,17 +81,17 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                     print("PROFILEVC: Successfully uploaded to Firebase storage.")
                     let downloadURL = metadata?.downloadURL()?.absoluteString
                     if let url = downloadURL {
-                        self.postToFirebase(imgUrl: downloadURL!)
+                        self.profileToFirebase(imgUrl: downloadURL!)
                         print(url)
                     }
                 }
             }
         }
         
-        //performSegue(withIdentifier: "backToFeed", sender: nil)
+        performSegue(withIdentifier: "backToFeed", sender: nil)
     }
     
-    func postToFirebase(imgUrl: String) {
+    func profileToFirebase(imgUrl: String) {
         let ref = ds.REF_USER_CURRENT
         let image: Dictionary<String, Any> = [
             "name": NSUUID().uuidString,
@@ -108,7 +108,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             "bio": bioField.text as Any,
             "birth": birthField.text as Any
         ]
-        // update per keychain
+        
         ref.updateData(user)
         
         imageSelected = false

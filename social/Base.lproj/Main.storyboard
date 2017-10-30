@@ -266,7 +266,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4pu-Se-DMy">
                                                             <rect key="frame" x="8" y="8" width="343" height="80.5"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="CmQ-sG-pEp">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="CmQ-sG-pEp" customClass="CircleView" customModule="social" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="80" id="odJ-Rl-XHZ"/>
@@ -483,6 +483,9 @@
                                                     <constraint firstAttribute="width" constant="80" id="RhT-QI-HnG"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-add"/>
+                                                <connections>
+                                                    <action selector="addPostButton:" destination="Fvz-IE-FgW" eventType="touchUpInside" id="nTv-Q5-PI5"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -583,6 +586,7 @@
                         <viewLayoutGuide key="safeArea" id="iiE-Vn-KZV"/>
                     </view>
                     <connections>
+                        <outlet property="inputField" destination="SjA-0D-Vp6" id="6qj-AJ-n24"/>
                         <outlet property="tableView" destination="3OE-hg-XOA" id="eav-rl-fP7"/>
                     </connections>
                 </viewController>
@@ -779,6 +783,7 @@
         <image name="icon-save" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="HS3-rC-aq4"/>
         <segue reference="ziq-ef-WVp"/>
     </inferredMetricsTieBreakers>
 </document>

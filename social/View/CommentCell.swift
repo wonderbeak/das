@@ -30,7 +30,6 @@ class CommentCell: UITableViewCell {
         formatter.locale = Locale(identifier: "en_US")
         formatter.setLocalizedDateFormatFromTemplate("MMMMd")
         let date = formatter.string(from: comment.date)
-        print(date)
         
         self.dateLabel.text = date
         
