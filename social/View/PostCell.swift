@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class PostCell: UITableViewCell {
     
@@ -17,6 +18,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var likesImage: UIImageView!
     @IBOutlet weak var comments: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     var post: Post!
     
     override func awakeFromNib() {
@@ -30,6 +32,9 @@ class PostCell: UITableViewCell {
         self.post = post
         self.content.text = post.content
         self.usernameLabel.text = post.caption
+        if KeychainWrapper.standard.string(forKey: KEY_UID) == post.authorId {
+            deleteButton.isHidden = false
+        }
         if post.likes > 0 {
             self.likesImage.image = UIImage(named: "icon-like")
         }
@@ -99,4 +104,12 @@ class PostCell: UITableViewCell {
             }
         }
     }
+    let ds = DataService.init()
+    @IBAction func deleteButton(_ sender: Any) {
+        for comment in self.post.comments {
+            ds.REF_COMMENTS.document(comment).delete()
+        }
+        ds.REF_POSTS.document(post.postKey).delete()
+    }
+    
 }

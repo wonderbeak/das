@@ -50,22 +50,20 @@ class DataService {
         return REF_POSTS.document(uid)
     }
     
-    func getImage(uid: String) -> DocumentReference {
-        print("DataService: Fetching image: \(uid)")
-        return REF_IMAGES.document(uid)
-    }
-    
     // COMMENTS
     // create
     func createComment(uid: String, userData: Dictionary<String, Any>){
         REF_COMMENTS.document(uid).setData(userData)
     }
-    // select
-
     
     // IMAGES
     // create
     func createImage(uid: String, userData: Dictionary<String, Any>){
         REF_IMAGES.document(uid).setData(userData)
+    }
+    
+    // select
+    func getImage(uid: String) -> DocumentReference {
+        return REF_IMAGES.document(uid)
     }
 }
