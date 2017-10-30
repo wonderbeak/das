@@ -24,7 +24,7 @@ class DataService {
     // USERS
     // create
     func createUser(uid: String, userData: Dictionary<String, Any>){
-        REF_USERS.document(uid).setData(userData)
+        REF_USERS.document(uid).updateData(userData)
     }
     
     // select
@@ -39,6 +39,7 @@ class DataService {
     func createPost(uid: String, userData: Dictionary<String, Any>){
         REF_POSTS.document(uid).setData(userData)
     }
+    
     // select
     func fetchPost(uid: String) -> Any {
         return REF_POSTS.document(uid)
@@ -66,6 +67,8 @@ class DataService {
     func createComment(uid: String, userData: Dictionary<String, Any>){
         REF_COMMENTS.document(uid).setData(userData)
     }
+    // select
+
     
     // IMAGES
     // create

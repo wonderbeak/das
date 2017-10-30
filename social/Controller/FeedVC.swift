@@ -17,7 +17,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var captionField: UITextField!
     @IBOutlet weak var contentField: UITextField!
     
-    var postId: String?
+    var postId: Post?
     
     var imagePicker: UIImagePickerController!
     static var imageCache:  NSCache<NSString, UIImage> = NSCache()
@@ -64,20 +64,26 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
             let url = ds.getImage(uid: post.image)
-            print(url)
+            //print(url)
             //var image: UIImage!
             if let img = FeedVC.imageCache.object(forKey: url as NSString) {
                 cell.configureCell(post: post, image: img)
-                postId = post.postKey
+                //postId = post
                 return cell
             } else {
                 cell.configureCell(post: post)
-                postId = post.postKey
+                //postId = post
                 return cell
             }
         } else {
             return PostCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        postId = post
+        print(postId?.postKey)
     }
     
     // IMAGE PICKER
@@ -162,12 +168,14 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToComments" {
+        if segue.identifier == "goToComments", postId != nil {
             if let destinationViewController = segue.destination as? CommentVC {
                 destinationViewController.post = postId
             }
         }
     }
+    
+  
     
     @IBAction func commentsButton(_ sender: Any) {
         //performSegue(withIdentifier: "goToComments", sender: nil)

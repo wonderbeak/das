@@ -15,7 +15,7 @@ class Post {
     private var _content: String!
     private var _date: Date!
     private var _likes: Int!
-    private var _comments: String!
+    private var _comments: [String]!
     
     var caption: String {
         return _caption
@@ -33,7 +33,7 @@ class Post {
         return _date
     }
     
-    var comments: String {
+    var comments: [String] {
         return _comments
     }
     
@@ -41,12 +41,17 @@ class Post {
         return _postKey
     }
     
-    init(caption: String, image: String, content: String, date: Date, likes: Int) {
+    var likes: Int {
+        return _likes
+    }
+    
+    init(caption: String, image: String, content: String, date: Date, likes: Int, comments: [String]) {
         self._caption = caption
         self._image = image
         self._content = content
         self._likes = likes
         self._date = date
+        self._comments = comments
     }
     
     init(postKey: String, postData: Dictionary<String, Any>) {
@@ -65,6 +70,12 @@ class Post {
         }
         if let likes = postData["likes"] as! Int? {
             self._likes = likes
+        }
+        if let comments = postData["comments"] {
+            if comments is [String], comments != nil {
+                self._comments = comments as! [String]
+                print(comments)
+            }
         }
     }
     

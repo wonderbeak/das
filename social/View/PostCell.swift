@@ -16,6 +16,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var likesImage: UIImageView!
+    @IBOutlet weak var comments: UIButton!
     var post: Post!
     
     override func awakeFromNib() {
@@ -25,23 +26,19 @@ class PostCell: UITableViewCell {
     
     func configureCell(post: Post, image: UIImage? = nil) {
         self.post = post
-        //self.postId.text = post.postKey
         self.content.text = post.content
-        //self.postImage = post.image
         self.usernameLabel.text = post.caption
         
         if image != nil {
             self.postImage.image = image
         } else {
-            //print(post.image)
             let url = DataService.init().getImage(uid: post.image)
-            print(url)
             let ref = Storage.storage().reference(forURL: url)
             ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
                 if error != nil {
-                    print("Unable to download image from Firebase storage.")
+                    print("POSTCELL: Unable to download image from Firebase storage.")
                 } else {
-                    print("Image downloaded from Firebase storage")
+                    print("POSTCELL: Image downloaded from Firebase storage")
                     if let imageData = data {
                         if let img = UIImage(data: imageData) {
                             self.postImage.image = img
@@ -51,12 +48,5 @@ class PostCell: UITableViewCell {
                 }
             }
         }
-    }
-    
-//    func getPostId() -> String? {
-//        return postId.text
-//    }
-    
-    @IBAction func commentsButton(_ sender: Any) {
     }
 }
