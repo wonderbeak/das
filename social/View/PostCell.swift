@@ -109,6 +109,7 @@ class PostCell: UITableViewCell {
         for comment in self.post.comments {
             ds.REF_COMMENTS.document(comment).delete()
         }
+        ds.REF_IMAGES.document(post.image).delete()
         ds.REF_POSTS.document(post.postKey).delete()
     }
     

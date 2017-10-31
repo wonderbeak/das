@@ -11,5 +11,5 @@ target 'social' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'SwiftKeychainWrapper', :git => 'https://github.com/jrendel/SwiftKeychainWrapper.git', :branch => 'master'
-
+  pod 'FBSDKLoginKit'
 end
