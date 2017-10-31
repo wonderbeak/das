@@ -110,6 +110,20 @@ class PostCell: UITableViewCell {
             ds.REF_COMMENTS.document(comment).delete()
         }
         ds.REF_IMAGES.document(post.image).delete()
+        ds.REF_USER_CURRENT.getDocument { (document, error) in
+                if let document = document {
+                    let key = document.documentID
+                    let user = User.init(userKey: key, userData: document.data())
+                    user.remove(post: self.post.postKey)
+                    let userData: Dictionary<String, Any> = [
+                        "date": Date(),
+                        "posts": user.posts
+                    ]
+                    self.ds.REF_USER_CURRENT.updateData(userData)
+                } else {
+                    print("SIGNINVC: Error occured during delete.")
+                }
+        }
         ds.REF_POSTS.document(post.postKey).delete()
     }
     

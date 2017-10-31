@@ -45,6 +45,10 @@ class User {
         return _posts
     }
 
+    func remove(post: String) {
+        _posts = _posts.filter{ $0 != post }
+    }
+    
     init(name: String, bio: String, birth: String, date: Date, avatar: String, posts: [String]) {
         self._name = name
         self._bio = bio

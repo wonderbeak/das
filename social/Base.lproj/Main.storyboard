@@ -43,7 +43,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWd-98-lJN" customClass="FancyView" customModule="social" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="542" width="375" height="125"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have not signed before - new account automatically will be created" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr1-af-Qfy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have not signed in before - a new account will be automatically  created" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr1-af-Qfy">
                                         <rect key="frame" x="8" y="4" width="359" height="113"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -94,6 +94,17 @@
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVB-at-9lI">
+                                <rect key="frame" x="147" y="339" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="a0E-Eo-GWn"/>
+                                    <constraint firstAttribute="height" constant="80" id="aCQ-AD-fr6"/>
+                                </constraints>
+                                <state key="normal" image="icon-fb"/>
+                                <connections>
+                                    <action selector="facebookButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Aw-IW-Cqa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -101,8 +112,10 @@
                             <constraint firstItem="Fn0-TA-hOG" firstAttribute="top" secondItem="2HK-3I-Jfy" secondAttribute="bottom" constant="8" id="11W-m2-nMr"/>
                             <constraint firstItem="X4l-WL-Xce" firstAttribute="top" secondItem="Fn0-TA-hOG" secondAttribute="bottom" constant="8" id="NAK-ib-Jtp"/>
                             <constraint firstItem="iWd-98-lJN" firstAttribute="top" secondItem="X4l-WL-Xce" secondAttribute="bottom" constant="217" id="NDf-Vy-eiq"/>
+                            <constraint firstItem="FVB-at-9lI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OJh-Ts-w6c"/>
                             <constraint firstItem="ZuE-cY-GVY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="YRC-sF-vlq"/>
                             <constraint firstItem="7bK-jn-gmA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Zsq-rg-O4u"/>
+                            <constraint firstItem="FVB-at-9lI" firstAttribute="top" secondItem="X4l-WL-Xce" secondAttribute="bottom" constant="14" id="a7R-hQ-RLq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6yB-6l-dkm" secondAttribute="trailing" constant="16" id="aZh-yf-hxH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZuE-cY-GVY" secondAttribute="trailing" constant="43" id="ci2-Ou-ZVU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2HK-3I-Jfy" secondAttribute="trailing" constant="78" id="dTF-6A-T99"/>
@@ -455,22 +468,11 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMENTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kI-uC-H2a">
-                                                <rect key="frame" x="45" y="0.0" width="269" height="45"/>
+                                                <rect key="frame" x="45" y="0.0" width="314" height="45"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dK-1j-pUa">
-                                                <rect key="frame" x="314" y="0.0" width="45" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="45" id="jBc-LE-Q1L"/>
-                                                    <constraint firstAttribute="height" constant="45" id="t3x-He-z9e"/>
-                                                </constraints>
-                                                <state key="normal" image="icon-save"/>
-                                                <connections>
-                                                    <action selector="saveButton:" destination="JJr-au-4VX" eventType="touchUpInside" id="lzv-BC-qVE"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -797,6 +799,7 @@
         <image name="icon-avatar" width="128" height="128"/>
         <image name="icon-back" width="128" height="128"/>
         <image name="icon-exit" width="128" height="128"/>
+        <image name="icon-fb" width="128" height="128"/>
         <image name="icon-insta" width="512" height="512"/>
         <image name="icon-nolike" width="128" height="128"/>
         <image name="icon-profile" width="200" height="200"/>
